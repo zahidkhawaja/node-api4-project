@@ -4,8 +4,7 @@ exports.up = function(knex) {
       users.increments();
       users
         .string('name')
-        .notNullable()
-        .unique();
+        .notNullable();
     })
     .createTable('posts', function(posts) {
       posts.increments();
