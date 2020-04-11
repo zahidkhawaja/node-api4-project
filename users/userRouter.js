@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const User = require("./userDb");
 const Post = require("../posts/postDb");
+var cors = require("cors");
 
 // GET all users
-router.get('/', (req, res) => {
+router.get('/', cors(), (req, res) => {
   User.get()
   .then(users => {
     res.status(200).json(users);
