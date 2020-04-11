@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const User = require("./userDb");
 const Post = require("../posts/postDb");
-var cors = require("cors");
 
 // GET all users
-router.get('/', cors(), (req, res) => {
+router.get('/', (req, res) => {
   User.get()
   .then(users => {
     res.status(200).json(users);
@@ -29,7 +28,7 @@ router.get('/:id', validateUserId, (req, res) => {
 });
 
 // POST user
-router.post('/', cors(), (req, res) => {
+router.post('/', (req, res) => {
   User.insert(req.body)
   .then(users => {
     res.status(201).json(users)
