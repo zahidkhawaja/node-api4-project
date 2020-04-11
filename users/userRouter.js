@@ -12,7 +12,7 @@ router.get('/', cors(), (req, res) => {
   })
   .catch(err => {
     console.log(err);
-    res.status(500).json({ message: "Error getting users."})
+    res.status(500).json({ message: "Error getting messages."})
   })
 });
 
@@ -29,14 +29,14 @@ router.get('/:id', validateUserId, (req, res) => {
 });
 
 // POST user
-router.post('/', validateUser, (req, res) => {
+router.post('/', cors(), (req, res) => {
   User.insert(req.body)
   .then(users => {
     res.status(201).json(users)
   })
   .catch(err => {
     console.log(err);
-    res.status(500).json({ message: "Cannot add user."})
+    res.status(500).json({ message: "Cannot add message."})
   })
 });
 
